@@ -1,4 +1,9 @@
-import { useState } from "react";
+/* eslint-disable no-alert */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable react/react-in-jsx-scope */
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const AddTask = ({ onAdd }) => {
   const [text, setText] = useState('');
@@ -8,16 +13,16 @@ const AddTask = ({ onAdd }) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if(!text) {
+    if (!text) {
       alert('Please add a task');
-      return
+      return;
     }
 
     onAdd({ text, day, reminder });
     setText('');
     setDay('');
     setReminder(false);
-  }
+  };
 
   return (
     <form action="" className="add-form" onSubmit={onSubmit}>
@@ -27,7 +32,7 @@ const AddTask = ({ onAdd }) => {
       </div>
       <div className="form-control">
         <label>Day & Time</label>
-        <input type="text" placeholder="Add Day & Time" value={day} onChange={(e) => setDay(e.target.value)}  />
+        <input type="text" placeholder="Add Day & Time" value={day} onChange={(e) => setDay(e.target.value)} />
       </div>
       <div className="form-control form-control-check">
         <label>Set Reminder</label>
@@ -35,7 +40,11 @@ const AddTask = ({ onAdd }) => {
       </div>
       <input type="submit" value="Save Task" className="btn btn-block" />
     </form>
-  )
-}
+  );
+};
+
+AddTask.propTypes = {
+  onAdd: PropTypes.func.isRequired,
+};
 
 export default AddTask;
