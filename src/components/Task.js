@@ -1,31 +1,13 @@
-const tasks = [
-  {
-    id: 1,
-    text: 'Doctors Appointment',
-    day: 'Feb 5th at 2:30pm',
-    reminder: true,
-  },
-  {
-    id: 1,
-    text: 'Doctors Appointment',
-    day: 'Feb 5th at 2:30pm',
-    reminder: true,
-  },
-  {
-    id: 1,
-    text: 'Doctors Appointment',
-    day: 'Feb 5th at 2:30pm',
-    reminder: true,
-  }
-];
+import { FaTimes } from 'react-icons/fa';
 
-const Task = () => {
+const Task = ({ task }) => {
   return (
-    <>
-      {tasks.map((task) => (
-        <h3>{task.text}</h3>
-      ))}
-    </>
+    <div className='task'>
+      <h3>
+        {task.text} <FaTimes style={{ color: 'red', cursour: 'pointer'}}/>
+      </h3>
+      <p>{task.day}</p>
+    </div>
   )
 }
 
